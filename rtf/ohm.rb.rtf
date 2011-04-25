@@ -1,0 +1,41 @@
+{\rtf1\ansi\uc0 \deff1{\fonttbl{\f1\fmodern\fprq1\fcharset0 Monaco;}}{\colortbl;\red00\green00\blue00;\red255\green00\blue00;\red41\green40\blue255;\red131\green129\blue131;\red131\green129\blue131;\red255\green00\blue255;\red00\green130\blue00;\red129\green129\blue00;\red85\green85\blue85;\red00\green00\blue00;\red00\green00\blue00;\red131\green00\blue00;\red00\green00\blue00;\red01\green01\blue129;}
+\paperw11905\paperh16837\margl1134\margr1134\margt1134\margb1134\sectd\plain\f1\fs40
+\pard {\cf1{require}} {\cf2{'ohm'}}{\cf1{}}\par\pard
+\par\pard
+{\cf11{\b class\b0 }} {\cf1{Ohm}}\par\pard
+\par\pard
+  {\cf11{\b class\b0 }} {\cf1{Model}}\par\pard
+    {\cf4{\i # initialize: added ability to pass redis_id and have it\i0 }}\par\pard
+{\cf1{}}    {\cf4{\i # define the actual Ohm ID.  (new? is broken in Ohm, BTW)\i0 }}\par\pard
+{\cf1{    alias_method}} {\cf10{:}}{\cf1{initialize_without_redis_id}}{\cf10{, :}}{\cf1{initialize}}\par\pard
+    {\cf11{\b def\b0 }} {\cf1{}}{\cf14{initialize_with_redis_id}}{\cf1{}}{\cf10{(}}{\cf1{args=}}{\cf10{\{\}}}{\cf1{)\par\pard
+      @redis_id = args}}{\cf10{.}}{\cf1{}}{\cf14{delete}}{\cf1{}}{\cf10{(:}}{\cf1{redis_id)}}\par\pard
+      {\cf14{initialize_without_redis_id}}{\cf1{}}{\cf10{(}}{\cf1{args)}}\par\pard
+    {\cf11{\b end\b0 }}\par\pard
+{\cf1{    alias_method}} {\cf10{:}}{\cf1{initialize}}{\cf10{, :}}{\cf1{initialize_with_redis_id}}\par\pard
+\par\pard
+    {\cf11{\b def\b0 }} {\cf1{initialize_id\par\pard
+      @id}} {\cf10{||}}{\cf1{=}} {\cf10{(}}{\cf1{@redis_id}} {\cf10{||}} {\cf1{}}{\cf11{\b self\b0 }}{\cf1{}}{\cf10{.}}{\cf1{}}{\cf11{\b class\b0 }}{\cf1{}}{\cf10{.}}{\cf1{key}}{\cf10{[:}}{\cf1{id}}{\cf10{].}}{\cf1{incr}}{\cf10{.}}{\cf1{to_s)}}\par\pard
+    {\cf11{\b end\b0 }}\par\pard
+{\cf1{    private}} {\cf10{:}}{\cf1{initialize_id}}\par\pard
+\par\pard
+\par\pard
+    {\cf4{\i # List#push_id (regular push needed an Ohm model,\i0 }}\par\pard
+{\cf1{}}    {\cf4{\i # when we know the id's before the objects are\i0 }}\par\pard
+{\cf1{}}    {\cf4{\i # saved, we still would like to push them).\i0 }}\par\pard
+{\cf1{}}    {\cf11{\b class\b0 }} {\cf1{List}}\par\pard
+      {\cf11{\b def\b0 }} {\cf1{}}{\cf14{push_id}}{\cf1{}}{\cf10{(}}{\cf1{model_id)\par\pard
+        key}}{\cf10{.}}{\cf1{}}{\cf14{rpush}}{\cf1{}}{\cf10{(}}{\cf1{model_id)}}\par\pard
+      {\cf11{\b end\b0 }}\par\pard
+{\cf1{}}    {\cf11{\b end\b0 }}\par\pard
+{\cf1{}}\par\pard
+    {\cf4{\i # Set#push_id -- same as above..\i0 }}\par\pard
+{\cf1{}}    {\cf11{\b class\b0 }} {\cf1{Set}}\par\pard
+      {\cf11{\b def\b0 }} {\cf1{}}{\cf14{push_id}}{\cf1{}}{\cf10{(}}{\cf1{model_id)\par\pard
+        key}}{\cf10{.}}{\cf1{}}{\cf14{sadd}}{\cf1{}}{\cf10{(}}{\cf1{model_id)}}\par\pard
+      {\cf11{\b end\b0 }}\par\pard
+{\cf1{}}    {\cf11{\b end\b0 }}\par\pard
+{\cf1{}}\par\pard
+  {\cf11{\b end\b0 }}\par\pard
+{\cf1{}}{\cf11{\b end\b0 }}{\cf1{}}\par\pard
+}}

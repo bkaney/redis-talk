@@ -1,0 +1,14 @@
+{\rtf1\ansi\uc0 \deff1{\fonttbl{\f1\fmodern\fprq1\fcharset0 Monaco;}}{\colortbl;\red00\green00\blue00;\red255\green00\blue00;\red41\green40\blue255;\red131\green129\blue131;\red131\green129\blue131;\red255\green00\blue255;\red00\green130\blue00;\red129\green129\blue00;\red85\green85\blue85;\red00\green00\blue00;\red00\green00\blue00;\red131\green00\blue00;\red00\green00\blue00;\red01\green01\blue129;}
+\paperw11905\paperh16837\margl1134\margr1134\margt1134\margb1134\sectd\plain\f1\fs40
+\pard {\cf1{}}{\cf4{\i #!/usr/bin/env ruby\i0 }}\par\pard
+{\cf1{\par\pard
+require}} {\cf2{'redis'}}{\cf1{\par\pard
+\par\pard
+db = Redis}}{\cf10{.}}{\cf1{new\par\pard
+db}}{\cf10{.}}{\cf1{flushall}} {\cf11{\b unless\b0 }} {\cf1{}}{\cf13{\b ENV\b0 }}{\cf1{}}{\cf10{[}}{\cf1{}}{\cf2{'NOFLUSH'}}{\cf1{}}{\cf10{]}}\par\pard
+{\cf1{\par\pard
+db}}{\cf10{.}}{\cf1{hmset}} {\cf2{'movie:{1}'}}{\cf1{}}{\cf10{,}} {\cf1{}}{\cf2{'name'}}{\cf1{}}{\cf10{,}} {\cf1{}}{\cf2{'Top Gun'}}{\cf1{}}{\cf10{,}} {\cf1{}}{\cf2{'genre'}}{\cf1{}}{\cf10{,}} {\cf1{}}{\cf2{'Action'}}{\cf1{}}\par\pard
+\par\pard
+{\cf4{\i # Create a character that references the movie\i0 }}\par\pard
+{\cf1{db}}{\cf10{.}}{\cf1{hmset}} {\cf14{get_pk}}{\cf1{}}{\cf10{(}}{\cf1{}}{\cf2{'character'}}{\cf1{}}{\cf10{,}} {\cf1{db)}}{\cf10{,}} {\cf1{}}{\cf2{'name'}}{\cf1{}}{\cf10{,}} {\cf1{}}{\cf2{'Mavrick'}}{\cf1{}}{\cf10{,}} {\cf1{}}{\cf2{'movie_id'}}{\cf1{}}{\cf10{,}} {\cf1{}}{\cf2{'movie:{1}'}}{\cf1{}}\par\pard
+}}
